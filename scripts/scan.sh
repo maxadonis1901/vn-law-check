@@ -113,10 +113,12 @@ consent="none"
 if found TRACKING; then
   # Thẻ <script src=tracker> viết thẳng trong HTML thì chạy ngay khi tải trang.
   # Bỏ qua thẻ type="text/plain": cách các thư viện đồng ý dùng để chặn script tới khi người dùng bấm đồng ý.
-  static_hits="$(grep -rEIino --include='*.html' --include='*.htm' --include='*.php' --include='*.liquid' \
+  static_hits="$(grep -rEIl --include='*.html' --include='*.htm' --include='*.php' --include='*.liquid' \
       "${EXCLUDE_ARGS[@]}" \
-      -e '<script[^>]*src=["'"'"'][^"'"'"']*(googletagmanager\.com|google-analytics\.com|connect\.facebook\.net|analytics\.tiktok\.com|clarity\.ms|hotjar|cdn\.segment\.com)' \
-      "$DIR" 2>/dev/null | grep -viE 'type=["'"'"']text/plain' | awk '!seen[$0]++' | head -n 3)"
+      -e '<script' "$DIR" 2>/dev/null \
+      | while IFS= read -r file; do
+          awk -f "$(dirname "$0")/tracking-preload.awk" "$file"
+        done | awk '!seen[$0]++' | head -n 3)"
   gate_hits="$(grep "${GREP_ARGS[@]}" -e "cookiebot|onetrust|cookieyes|cookie-script\.com|klaro|iubenda|osano|termly|complianz|cookieconsent|gtag\([\"']consent[\"']|ad_storage[\"']?:[[:space:]]*[\"']denied|data-cookieconsent|data-category=[\"'](analytics|marketing)|cookie[_-]?consent|consent[_-]?(given|granted|accepted)|đồng ý cookie|chấp nhận cookie" "$DIR" 2>/dev/null | awk '!seen[$0]++' | head -n 3)"
   if [ -n "$static_hits" ]; then
     consent="static"

@@ -32,40 +32,64 @@ mkdir -p "$OUT/pages" "$OUT/js"
 
 # Đổi link tương đối thành URL đầy đủ, bỏ link sang tên miền khác
 resolve() {
-  local href="$1"
+  local base="$1" href="$2"
+  base="${base%%#*}"
   href="${href%%#*}"
   case "$href" in
     ""|mailto:*|tel:*|javascript:*|data:*) return ;;
     //*) href="$scheme:$href" ;;
     /*) href="$origin$href" ;;
     http://*|https://*) ;;
-    *) href="$origin/$href" ;;
+    \?*) href="${base%%\?*}$href" ;;
+    *)
+      base="${base%%\?*}"
+      [ "$base" = "$origin" ] && base="$base/"
+      href="${base%/*}/$href"
+      ;;
   esac
-  [[ "$href" == "$origin"* ]] && printf '%s\n' "$href"
+  # Ranh giới authority: không nhận domain có cùng tiền tố, port khác hay userinfo @.
+  case "$href" in
+    "$origin"|"$origin/"*|"$origin?"*) printf '%s\n' "$href" ;;
+  esac
 }
 
 safe_name() { printf '%s' "$1" | sed -E "s#^$origin##; s#[^A-Za-z0-9._-]+#_#g; s#^_##" | cut -c1-80; }
 
+# Mỗi file JS được nối theo URL của trang chứa nó, không theo trang chủ.
+scripts_from_page() {
+  local file="$1" base="$2"
+  grep -oE '<script[^>]+src="[^"]+"' "$file" | sed -E 's/.*src="//; s/"$//' \
+    | while IFS= read -r src; do resolve "$base" "$src"; done
+}
+
 echo "Tải trang chủ: $URL"
-if ! "${CURL[@]}" -D "$OUT/response-headers.txt" "$URL" -o "$OUT/pages/index.html"; then
+if ! entry_url="$("${CURL[@]}" -w '%{url_effective}' -D "$OUT/response-headers.txt" "$URL" -o "$OUT/pages/index.html")"; then
   echo "Không tải được $URL" >&2
   exit 1
 fi
+# Sau redirect chuẩn hóa (HTTP -> HTTPS, www...), dùng origin thật của trang chủ.
+origin="$(printf '%s' "$entry_url" | sed -E 's|^(https?://[^/?#]+).*|\1|')"
+scheme="${origin%%://*}"
 
 links="$(grep -oE 'href="[^"]+"|href='"'"'[^'"'"']+'"'" "$OUT/pages/index.html" | sed -E "s/^href=[\"']//; s/[\"']$//")"
-pages="$(while read -r h; do resolve "$h"; done <<< "$links" \
+pages="$(while IFS= read -r h; do resolve "$entry_url" "$h"; done <<< "$links" \
   | grep -iE 'chinh-sach|bao-mat|privacy|policy|dieu-khoan|terms|lien-he|contact|san-pham|product|cart|gio-hang|checkout|thanh-toan|login|dang-nhap|signin|register|dang-ky|signup' \
   | sort -u | head -n "$MAX_PAGES")"
 
+scripts="$(scripts_from_page "$OUT/pages/index.html" "$entry_url")"
 n=0
 while read -r p; do
   [ -z "$p" ] && continue
-  "${CURL[@]}" "$p" -o "$OUT/pages/$(safe_name "$p").html" && n=$((n + 1))
+  file="$OUT/pages/$(safe_name "$p").html"
+  if page_url="$("${CURL[@]}" -w '%{url_effective}' "$p" -o "$file")"; then
+    n=$((n + 1))
+    scripts="$scripts
+$(scripts_from_page "$file" "$page_url")"
+  fi
 done <<< "$pages"
 echo "Tải thêm $n trang liên quan"
 
-scripts="$(cat "$OUT"/pages/*.html | grep -oE '<script[^>]+src="[^"]+"' | sed -E 's/.*src="//; s/"$//')"
-js="$(while read -r s; do resolve "$s"; done <<< "$scripts" | sort -u | head -n "$MAX_JS")"
+js="$(printf '%s\n' "$scripts" | sed '/^$/d' | sort -u | head -n "$MAX_JS")"
 
 m=0
 while read -r j; do
