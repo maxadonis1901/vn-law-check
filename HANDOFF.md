@@ -112,7 +112,8 @@ the CI YAML/JSON checks pass.
 - Gate: all existing fixtures plus HTTP and JSON tests pass; directory
   text output matches pre-change snapshots; schema examples parse; sync,
   shell syntax and existing CI gates pass.
-- Status: implementation and independent review complete; PR/CI pending.
+- Status: COMPLETE; PR https://github.com/mhfed/vn-law-check/pull/18 open,
+  implementation CI green. No merge performed.
   Base: `a5875d6`.
 - RED -> GREEN: unsupported --json and large-evidence argv overflow were
   reproduced before implementation changes. Raw fields now use NUL-delimited
@@ -123,14 +124,17 @@ the CI YAML/JSON checks pass.
 - `bash -n scripts/scan.sh scripts/fetch-site.sh tests/run.sh` PASS;
   `bash tools/sync.sh --check` PASS; `git diff --check` PASS.
 - Generated plugin smoke: --json on landing-form parses, consent=static.
-- Local YAML check not rerun (host PyYAML unavailable); required YAML/JSON
-  format checks will run in existing GitHub CI on the PR.
+- GitHub Actions `check` run 44669595489 PASS on implementation commit
+  `b6536f1`: sync, all fixtures/HTTP/JSON tests, SKILL YAML and plugin JSON.
+  Local YAML check not rerun (host PyYAML unavailable); the required check
+  passed in GitHub CI.
 - One read-only reviewer found an existing shorter filename prefix could
   steal evidence from a colon-containing filename, and Unicode/control line
   separators were incorrectly treated as LF. Both reproduced RED -> GREEN
   and fixed in one pass; the full suite and text compatibility check pass.
   Unicode preservation was treated as part of the evidence contract despite
   the reviewer grading that case minor. No findings were deferred.
-- Next action: open PR and wait for CI. Do not merge in this phase.
+- Next action: maintainer review/merge of PR #18. This documentation-only
+  completion update records the verified implementation gate.
 - Rework cycles: 1 (evidence boundary cases from independent review).
   Actual token usage: unavailable.
