@@ -3,6 +3,7 @@
 #
 #   scripts/scan.sh [thư-mục-code]       quét source code website hoặc mobile app (mặc định: thư mục hiện tại)
 #   scripts/scan.sh https://ten-mien.vn  quét site đang chạy, khi không có source code
+#   scripts/scan.sh --json [target]     xuất JSON schema v1 (cần Python 3)
 #
 # Với thư mục: chỉ đọc file, không gọi mạng.
 # Với URL: gọi scripts/fetch-site.sh để tải các trang công khai của chính site đó
@@ -14,7 +15,36 @@
 
 set -uo pipefail
 
-TARGET="${1:-.}"
+TARGET="."
+JSON_MODE=0
+target_set=0
+literal=0
+for arg in "$@"; do
+  if [ "$literal" = 0 ]; then
+    case "$arg" in
+      --json) JSON_MODE=1; continue ;;
+      --) literal=1; continue ;;
+      -*) printf 'Tham số không hợp lệ: %s\nCách dùng: scan.sh [--json] [target]\n' "$arg" >&2; exit 2 ;;
+    esac
+  fi
+  if [ "$target_set" = 1 ]; then
+    printf 'Chỉ nhận một target. Cách dùng: scan.sh [--json] [target]\n' >&2
+    exit 2
+  fi
+  TARGET="$arg"
+  target_set=1
+done
+
+RESULTS=()
+record_result() {
+  if [ "$JSON_MODE" = 1 ]; then RESULTS+=("$1" "$2" "$3"); fi
+}
+if [ "$JSON_MODE" = 1 ]; then
+  command -v python3 >/dev/null || { printf 'Chế độ --json cần Python 3.\n' >&2; exit 1; }
+  # Giữ stdout gốc riêng cho JSON; không trộn báo cáo/progress text vào kết quả.
+  exec 3>&1
+  exec 1>/dev/null
+fi
 URL_MODE=0
 if [[ "$TARGET" =~ ^https?:// ]]; then
   URL_MODE=1
@@ -85,7 +115,10 @@ for entry in "${SIGNALS[@]}"; do
   limit=3; [ "$name" = PERMISSIONS ] && limit=10
   # Tín hiệu riêng của mobile app: chỉ xét khi thấy dấu hiệu app thật, tránh bắt nhầm thư viện web (mixpanel, amplitude...)
   case "$name" in PERMISSIONS|SDK_TRACKING|ADS_SDK)
-    if [ -z "$platforms" ]; then echo "[không] $name   (chỉ xét với mobile app)"; continue; fi ;;
+    if [ -z "$platforms" ]; then
+      record_result "$name" null ""
+      echo "[không] $name   (chỉ xét với mobile app)"; continue
+    fi ;;
   esac
   hits="$(grep "${GREP_ARGS[@]}" -e "$regex" "$DIR" 2>/dev/null | awk '!seen[$0]++' | head -n "$limit")"
   if [ "$name" = "FOREIGN_HOST" ] && [ -z "$hits" ]; then
@@ -101,15 +134,19 @@ for entry in "${SIGNALS[@]}"; do
   fi
   if [ -n "$hits" ]; then
     printf -v "FOUND_$name" 1
+    record_result "$name" true "$hits"
     echo "[có]    $name"
     echo "$hits" | sed "s#^$DIR/##" | cut -c1-160 | sed 's/^/          /'
   else
+    record_result "$name" false ""
     echo "[không] $name"
   fi
 done
 
 # Tracking chạy ngay hay chờ đồng ý. Chỉ đọc code nên chỉ là dấu hiệu, không thay được việc mở trình duyệt kiểm tra.
 consent="none"
+static_hits=""
+gate_hits=""
 if found TRACKING; then
   # Thẻ <script src=tracker> viết thẳng trong HTML thì chạy ngay khi tải trang.
   # Bỏ qua thẻ type="text/plain": cách các thư viện đồng ý dùng để chặn script tới khi người dùng bấm đồng ý.
@@ -137,22 +174,36 @@ if found TRACKING; then
     echo "[?]     CONSENT_GATE   (có tracking nhưng không thấy banner/cơ chế xin đồng ý; cần kiểm tra thủ công)"
   fi
 fi
+if found TRACKING; then
+  preload=false; [ -n "$static_hits" ] && preload=true
+  gated=false; [ -n "$gate_hits" ] && gated=true
+  record_result TRACKING_PRELOAD "$preload" "$static_hits"
+  record_result CONSENT_GATE "$gated" "$gate_hits"
+else
+  record_result TRACKING_PRELOAD null ""
+  record_result CONSENT_GATE null ""
+fi
 
 
+record_result ACCOUNT_DELETE null ""
 if [ -n "$platforms" ]; then
+  record_result MOBILE_APP true ""
   echo "[có]    MOBILE_APP"
   echo "          $platforms"
   # Chức năng xóa tài khoản chỉ cần kiểm tra khi app có đăng nhập
   if found AUTH; then
     del="$(grep "${GREP_ARGS[@]}" -e 'delete[-_ ]?account|deleteAccount|deleteUser|xóa tài khoản|xoá tài khoản|account[-_ ]deletion' "$DIR" 2>/dev/null | head -n 2)"
     if [ -n "$del" ]; then
+      record_result ACCOUNT_DELETE true "$del"
       echo "[có]    ACCOUNT_DELETE"
       echo "$del" | sed "s#^$DIR/##" | cut -c1-160 | sed 's/^/          /'
     else
+      record_result ACCOUNT_DELETE false ""
       echo "[không] ACCOUNT_DELETE   (app có đăng nhập nhưng không thấy chức năng xóa tài khoản, xem 09 mục C)"
     fi
   fi
 else
+  record_result MOBILE_APP false ""
   echo "[không] MOBILE_APP"
 fi
 
@@ -187,3 +238,10 @@ if [ "$URL_MODE" = 1 ]; then
 fi
 echo
 echo "LEVEL=$level AI=$ai FOREIGN_HOST=$host APP=$app TRACKING_CONSENT=$consent"
+
+if [ "$JSON_MODE" = 1 ]; then
+  # NUL giữ nguyên dấu nháy/newline; stdin tránh giới hạn độ dài argv với JS lớn.
+  printf '%s\0' "$TARGET" "$DIR" "$URL_MODE" "$level" "$ai" "$host" "$app" \
+    "$consent" "$platforms" "${RESULTS[@]}" \
+    | python3 "$(dirname "$0")/scan-json.py" >&3
+fi
