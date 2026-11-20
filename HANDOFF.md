@@ -38,8 +38,10 @@ the CI YAML/JSON checks pass.
 - `bash tools/sync.sh --check` PASS; `git diff --check` PASS.
 - `python3 -c 'import json; [json.load(open(f)) for f in
   [".claude-plugin/marketplace.json", "plugins/vn-law-check/.claude-plugin/plugin.json"]]'` PASS.
-- CI YAML check: NOT RUN locally (PyYAML absent; host pip fails macOS
-  detection even in an isolated environment). GitHub CI verification pending.
+- GitHub Actions `check` run 44659724461 PASS on implementation commit
+  `ca34cd5`: sync, full suite, SKILL YAML frontmatter and plugin JSON.
+  Local YAML check unavailable (PyYAML absent; host pip macOS detection fails);
+  the exact required YAML check passed in GitHub CI.
 - Independent read-only review found canonical-entry redirects and multiline
   script tags regressed. Both fixed in one pass, with RED -> GREEN tests.
   Script evidence retains original filename and line (manually checked).
@@ -48,7 +50,9 @@ the CI YAML/JSON checks pass.
 - Existing limitations: external redirects remain followed by curl; parsing
   is heuristic (no browser execution or general HTML-parser guarantee).
   Legal content and legal outcomes were not reviewed in this phase.
-- Remaining: publish PR and wait for the existing GitHub CI gate.
+- Status: complete; PR https://github.com/mhfed/vn-law-check/pull/16 open,
+  implementation CI green. This final documentation-only update records the
+  completed gate. No merge performed; next action is maintainer review/merge.
 - Rework cycles: 1 (review found two missing boundary cases; fixed together).
 - Environment retries (not code rework): localhost sandbox access, PyYAML setup.
 - Actual token usage: unavailable.
