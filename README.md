@@ -175,6 +175,47 @@ tools/        sync.sh: sinh các bản copy cho từng tool từ nguồn gốc
 
 `scan.sh` quét thư mục code thì chỉ đọc file local. Quét theo URL thì gọi `fetch-site.sh` tải các trang công khai của chính site đó (tối đa 15 trang và 20 file JS cùng lúc để tránh quét quá tải). Hai script không gửi dữ liệu đi đâu khác, không đọc biến môi trường hay credential, không sửa file của người dùng.
 
+### Đầu ra JSON cho script và CI
+
+```bash
+bash scripts/scan.sh --json ./project > scan-result.json
+bash scripts/scan.sh --json https://ten-mien.vn > scan-result.json
+```
+
+`--json` có thể đứng trước hoặc sau target; bỏ target thì quét thư mục hiện tại.
+Chế độ JSON cần **Python 3**, chỉ dùng thư viện chuẩn, không cần cài package.
+Chế độ text mặc định không thay đổi và không cần Python.
+
+JSON schema version 1 có các trường:
+
+| Trường | Nội dung |
+|---|---|
+| `schema_version` | Số `1`; consumer nên kiểm tra trước khi đọc |
+| `target` | Đường dẫn hoặc URL được truyền vào |
+| `scope` | `mode` là `directory`/`url`, `root` là thư mục đã quét; URL có giới hạn `max_linked_pages: 15`, `max_javascript_files: 20` |
+| `summary` | `level` (0–3), các boolean `ai`, `foreign_host`, `app`, danh sách `platforms` và `tracking_consent` (`none`/`static`/`gated`/`unknown`) |
+| `signals` | Các tín hiệu như `FORM`, `TRACKING`, `COMMERCE`, `MOBILE_APP`, `ACCOUNT_DELETE`, `TRACKING_PRELOAD`, `CONSENT_GATE` |
+| `limitations` | Các mã giới hạn của lần quét |
+
+Mỗi signal có `detected` là `true` (có dấu hiệu), `false` (chưa tìm thấy)
+hoặc `null` (không áp dụng/không được kiểm tra trong bối cảnh này), cùng
+`evidence` và `evidence_limit`. Mỗi bằng chứng gồm `file` tính từ `scope.root`,
+`line` là số dòng nguyên hoặc `null`, và `match` là đoạn khớp hoặc `null`.
+Ví dụ, cấu hình hosting chỉ nhận diện qua tên file thì không có số dòng hay
+đoạn khớp. `MOBILE_APP` cung cấp loại nền tảng ở `summary.platforms`.
+
+Giới hạn bằng chứng là 3 mục/tín hiệu, riêng `PERMISSIONS` là 10 và
+`ACCOUNT_DELETE` là 2; đây không phải danh sách đầy đủ mọi chỗ khớp.
+`limitations` luôn có `heuristic_matches_require_review`, `evidence_is_bounded`,
+`no_browser_execution`. Quét thư mục thêm `supported_source_files_only`
+(chỉ các đuôi file được hỗ trợ, loại trừ thư viện/build output); quét URL thêm
+`public_pages_only`, `server_side_not_inspected`. Thư mục tải về khi quét URL
+được giữ lại ở `scope.root` để đối chiếu bằng chứng.
+
+Khi thành công, stdout chỉ có một JSON document. Lỗi ghi ra stderr và trả
+exit code khác 0. Không tìm thấy tín hiệu không có nghĩa là website tuân thủ
+pháp luật; cần xem lại bằng chứng và checklist trước khi kết luận.
+
 ## Gửi PR
 
 Xem [CONTRIBUTING.md](CONTRIBUTING.md).

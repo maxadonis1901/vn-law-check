@@ -43,5 +43,6 @@ for dir in "$ROOT"/tests/fixtures/*/; do
 done
 
 python3 "$ROOT/tests/test_fetch_site.py" || fail=1
+python3 "$ROOT/tests/test_scan_json.py" || fail=1
 
 exit $fail
