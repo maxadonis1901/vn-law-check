@@ -2,7 +2,7 @@
 
 **Văn bản áp dụng:**
 - Luật Bảo vệ quyền lợi người tiêu dùng 2023: Luật số 19/2023/QH15, hiệu lực 01/07/2024 ([caselaw.vn](https://caselaw.vn/van-ban-phap-luat/411464-luat-bao-ve-quyen-loi-nguoi-tieu-dung-so-19-2023-qh15-ngay-20-06-2023-cua-quoc-hoi))
-- Nghị định 55/2024/NĐ-CP hướng dẫn Luật 19/2023 (ngày ban hành, hiệu lực: cần tra cứu lại).
+- Nghị định 55/2024/NĐ-CP hướng dẫn Luật 19/2023, ban hành 16/05/2024, hiệu lực 01/07/2024 ([Công báo](https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-55-2024-nd-cp-41942.htm), đối chiếu 21/11/2026).
 - Nghị định 98/2020/NĐ-CP (xử phạt), sửa đổi bởi Nghị định 24/2025/NĐ-CP ban hành và hiệu lực 21/02/2025. Theo [nguồn thứ cấp](https://hethongphapluat.com/nghi-dinh-24-2025-nd-cp-12e432b4306ea59c299ad3f38bb9b0c9.html), các điều liên quan: Điều 46 (thông tin người tiêu dùng), 47 (cung cấp thông tin, gian dối), 48-52 (hợp đồng theo mẫu), 53 (giao dịch từ xa), 53a (giao dịch trên không gian mạng), 60 (quấy rối), 61 (khiếu nại).
 
 > Điều 43 khoản 2 Luật An ninh mạng 116/2025 chỉ sửa câu chữ ở luật này (Điều 15, 16, 19: "an toàn, an ninh thông tin" thành "an ninh mạng"), không thêm nghĩa vụ mới.
@@ -21,7 +21,7 @@
 
 ## C. Giao dịch từ xa và trên không gian mạng (Điều 37-40)
 - [ ] Giao dịch từ xa: trách nhiệm của bên kinh doanh ở Điều 37.
-- [ ] Luật không có quyền trả hàng không lý do chung cho mọi giao dịch. Theo nguồn thứ cấp, người tiêu dùng được đơn phương chấm dứt hợp đồng giao kết từ xa trong 30 ngày khi bên bán cung cấp thông tin thiếu hoặc sai. Số điều: CHƯA XÁC MINH (có thể Điều 38). Không tự kết luận site phải cho trả hàng không lý do.
+- [ ] Khi bên kinh doanh cung cấp không chính xác/không đầy đủ thông tin theo khoản 1 Điều 37, người tiêu dùng có quyền đơn phương chấm dứt hợp đồng giao dịch từ xa và thông báo trong 30 ngày kể từ ngày giao kết (điểm b khoản 3 Điều 38 Luật 19/2023). Không phải trả chi phí chấm dứt, trừ phần hàng hóa/dịch vụ đã sử dụng. Khoản 4 Điều 38 quy định hoàn tiền phần chưa sử dụng trong 30 ngày kể từ ngày tuyên bố chấm dứt. Không chuyển điều kiện này thành quyền trả hàng không lý do chung cho mọi giao dịch. Đã đọc [toàn văn Công báo](https://congbao.chinhphu.vn/van-ban/luat-so-19-2023-qh15-39843.htm) ngày 21/11/2026.
 - [ ] Giao dịch trên không gian mạng: trách nhiệm với người tiêu dùng ở Điều 39; trách nhiệm công khai, gỡ bỏ thông tin cảnh báo ở Điều 40.
 
 ## D. Khiếu nại (Điều 31)

@@ -2,7 +2,7 @@
 
 **Văn bản áp dụng:**
 - Luật Trí tuệ nhân tạo: Luật số 134/2025/QH15, thông qua 10/12/2025, hiệu lực 01/03/2026 (Điều 34) ([thuvienphapluat](https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Tri-tue-nhan-tao-2025-so-134-2025-QH15-679013.aspx), [bản tiếng Anh](https://english.luatvietnam.vn/law-no-134-2025-qh15-dated-december-10-2025-of-the-national-assembly-on-artificial-intelligence-422299-doc1.html))
-- Nghị định 142/2026/NĐ-CP: hướng dẫn Luật Trí tuệ nhân tạo, hiệu lực 01/05/2026. Cách thông báo và gắn nhãn ở Điều 18 ([lsvn](https://lsvn.vn/thong-bao-va-gan-nhan-nhan-biet-noi-dung-do-ai-tao-ra-the-nao-a172678.html))
+- Nghị định 142/2026/NĐ-CP: hướng dẫn Luật Trí tuệ nhân tạo, ban hành 30/04/2026, hiệu lực 01/05/2026. Điều 18 đã đối chiếu [Công báo](https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-142-2026-nd-cp-469480.htm) ngày 21/11/2026; số khoản Điều 11 Luật 134 đã đối chiếu [bản gốc](https://congbao.chinhphu.vn/van-ban/luat-so-134-2025-qh15-468694.htm).
 
 ## A. Xác định vai trò của website
 Luật chia 2 vai trò, mỗi vai trò có nghĩa vụ khác nhau:
@@ -20,9 +20,9 @@ Luật chia 2 vai trò, mỗi vai trò có nghĩa vụ khác nhau:
 - [ ] Ảnh, âm thanh, video mô phỏng người thật hoặc tái hiện sự kiện có thật (deepfake) phải có **nhãn dễ nhận biết** (khoản 4). Với tác phẩm điện ảnh, nghệ thuật, sáng tạo, nhãn không được cản trở việc thưởng thức tác phẩm.
 - [ ] Âm thanh, hình ảnh, video do AI tạo được đánh dấu ở **định dạng máy đọc được** (ví dụ metadata, watermark kỹ thuật). Đây là nghĩa vụ của nhà cung cấp (khoản 2).
 - [ ] Vị trí đặt nhãn (Điều 18 NĐ 142/2026): trên chính nội dung, ở tiêu đề hoặc chú thích, trên giao diện nền tảng, hoặc bằng thông báo âm thanh. Bộ Khoa học và Công nghệ sẽ ban hành hướng dẫn kỹ thuật.
-- [ ] Thông tin minh bạch được duy trì suốt thời gian cung cấp hệ thống hoặc nội dung (khoản 5). Đánh số khoản 4-6 Điều 11 giữa các nguồn chưa thống nhất: cần tra cứu lại.
+- [ ] Thông tin minh bạch được duy trì suốt thời gian cung cấp hệ thống hoặc nội dung (khoản 5 Điều 11). Bản gốc có 6 khoản: phần tác phẩm điện ảnh/nghệ thuật/sáng tạo là đoạn thứ hai của **khoản 4**, không phải khoản riêng; khoản 5 là duy trì minh bạch; khoản 6 giao Chính phủ quy định chi tiết.
 
-**Không cần gắn nhãn** khi (Điều 18 khoản 4 NĐ 142/2026, theo nguồn thứ cấp):
+**Không phải gắn nhãn hiển thị** khi (Điều 18 khoản 4 NĐ 142/2026, đã đối chiếu Công báo; không đồng nhất với miễn mọi nghĩa vụ minh bạch):
 - chỉ chỉnh sửa kỹ thuật, không đổi bản chất nội dung
 - sửa chính tả, dịch thuật, tóm tắt, diễn giải mà không làm sai lệch nội dung cơ bản
 - dùng nội bộ, không cung cấp ra công cộng
@@ -31,7 +31,9 @@ Luật chia 2 vai trò, mỗi vai trò có nghĩa vụ khác nhau:
 ## D. Phân loại rủi ro (Điều 9)
 - [ ] Xác định mức rủi ro của hệ thống AI (Điều 9 khoản 1, theo nguồn thứ cấp): **cao** là có thể gây thiệt hại đáng kể tới tính mạng, sức khỏe, quyền lợi hợp pháp; **trung bình** là có thể gây nhầm lẫn, thao túng do người dùng không biết đang tương tác với AI; **thấp** là phần còn lại. Căn cứ phân loại: tác động tới quyền con người, an toàn, an ninh; lĩnh vực sử dụng; quy mô người dùng (khoản 2). Chatbot không cho người dùng biết là AI có thể rơi vào mức trung bình.
 - [ ] Hệ thống rủi ro cao (ví dụ AI ra quyết định trong tín dụng, tuyển dụng, y tế): phải đánh giá sự phù hợp trước khi đưa vào sử dụng (Điều 13 khoản 1). Chỉ hệ thống thuộc danh mục bắt buộc do Thủ tướng ban hành mới phải do tổ chức được đăng ký đánh giá; còn lại nhà cung cấp tự đánh giá hoặc thuê đánh giá (khoản 2, 4).
-- [ ] Cung cấp cho người bị ảnh hưởng thông tin về chức năng, cách vận hành, cảnh báo rủi ro (Điều 14 khoản 1 điểm e, khoản 2 điểm đ, theo nguồn thứ cấp). Quyền khiếu nại, yêu cầu con người xem xét lại: CHƯA XÁC MINH.
+- [ ] Cung cấp cho người bị ảnh hưởng thông tin công khai về chức năng, cách vận hành, cảnh báo rủi ro (Điều 14 khoản 1 điểm e, khoản 2 điểm đ, đã đối chiếu bản gốc). Quyền khiếu nại/yêu cầu con người xem xét lại với căn cứ riêng: CHƯA XÁC MINH; không biến nghĩa vụ giám sát/can thiệp của con người thành một quyền khiếu nại cụ thể chưa có nguồn.
+
+Danh mục rủi ro cao đã có [QĐ 33/2026/QĐ-TTg và Phụ lục](https://congbao.chinhphu.vn/van-ban/quyet-dinh-so-33-2026-qd-ttg-469951/66726.htm), ban hành 30/06/2026, hiệu lực 15/08/2026. Khi đánh giá, đối chiếu đúng hàng và điều kiện trong Phụ lục, Điều 8 khoản 2 và khoản 5 NĐ 142; không coi mọi chatbot y tế/giáo dục/tài chính là rủi ro cao. Checklist chi tiết được đề xuất ở issue #15 chưa được triển khai trong đợt xác minh này.
 
 ## E. Thời hạn chuyển tiếp (Điều 35)
 - [ ] Hệ thống AI đã vận hành trước 01/03/2026 có thời hạn để tuân thủ: **18 tháng** với y tế, giáo dục, tài chính (tức đến khoảng 01/09/2027); **12 tháng** với lĩnh vực khác (khoảng 01/03/2027). Trong thời gian này vẫn được hoạt động, trừ khi bị đánh giá là có nguy cơ gây thiệt hại nghiêm trọng.

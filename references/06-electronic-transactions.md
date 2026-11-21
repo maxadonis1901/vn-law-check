@@ -19,7 +19,7 @@
 - [ ] Đáp ứng điều kiện kinh doanh dịch vụ tin cậy (Điều 29).
 - [ ] Nếu chứng thực thông điệp dữ liệu/hợp đồng điện tử: làm đúng Điều 32.
 - [ ] Công khai quy chế hoạt động trên website: quyền và nghĩa vụ các bên, cách thực hiện dịch vụ, cách giải quyết khiếu nại.
-- [ ] Chứng thực hợp đồng điện tử trong thương mại còn theo Điều 36 Luật TMĐT 122/2025 (chi tiết ở NĐ 248/2026, số điều cần tra cứu lại). Đơn vị đã đăng ký trước 01/07/2026 được hoạt động đến hết 30/06/2027 (Điều 41 khoản 2 Luật 122/2025).
+- [ ] Chứng thực hợp đồng điện tử trong thương mại còn theo Điều 36 Luật TMĐT 122/2025. Đã đối chiếu [NĐ 248/2026, Chương VI](https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-248-2026-nd-cp-469983.htm) ngày 21/11/2026: Điều 41 trách nhiệm của tổ chức cung cấp dịch vụ, Điều 42 điều kiện kinh doanh, Điều 43 hồ sơ cấp/sửa đổi/bổ sung/thu hồi giấy phép, Điều 44 đề án cung cấp dịch vụ. Đơn vị đã đăng ký trước 01/07/2026 được hoạt động đến hết 30/06/2027 (Điều 41 khoản 2 Luật 122/2025).
 
 ## D. Lưu trữ thông điệp dữ liệu (Điều 13)
 - [ ] Hồ sơ, tài liệu điện tử của giao dịch được lưu theo Điều 13. Thời hạn lưu theo pháp luật chuyên ngành (kế toán, thuế, lao động...).
