@@ -161,7 +161,8 @@ the CI YAML/JSON checks pass.
 - Relevant paths: `references/08-penalties-reference.md`,
   `references/01-personal-data-protection.md`, relevant remaining checklist
   files, `sources/legal-references.md`, new verification ledger under sources/.
-- Status: source/diff independently reviewed and corrected; ready for PR. Verified
+- Status: source/diff independently reviewed and corrected; published as
+  https://github.com/mhfed/vn-law-check/pull/19 (open, not merged). Verified
   the published-wording questions in #1-#3 and #5; remaining issues have
   scoped findings and explicit open research in `sources/verification-2026-11-21.md`.
   No issue has been closed, and no scanner behavior was changed.
@@ -173,15 +174,18 @@ the CI YAML/JSON checks pass.
 - Verification: `bash tests/run.sh` PASS (17 fixtures, 8 URL tests, 13 JSON
   tests); `bash tools/sync.sh --check` PASS; `git diff --check` PASS; existing
   plugin JSON parse PASS. Local YAML check not rerun (host PyYAML unavailable);
-  GitHub CI gate still required. Original Công báo PDF pages visually checked
+  GitHub CI passed all steps, including YAML, at implementation commit
+  `88fbf1a2b893a1dc027c590e4fdfc05445336f5e`, run `44885630631`.
+  Original Công báo PDF pages visually checked
   for Article 54/57 NĐ 330 and Article 41 NĐ 356, including the 72-hour harm
   condition, formal designation, accumulated threshold and exceptions.
 - Risks: partial source research is explicitly retained; published text alone
   cannot establish a particular product's facts or resolve contested interpretation.
 - Independent review: introduced claims checked against local primary extracts;
   all reported scope/role omissions corrected and confirmed in a bounded recheck.
-- Next action/gate: integrate independent findings, publish reviewable PR,
-  wait for required GitHub CI; maintainer review/merge remains separate.
+- Next action/gate: maintainer review/merge PR #19. This completion-only
+  handoff update records the verified implementation gate. Remaining source
+  research is listed per issue in the verification ledger, not silently closed.
 - Rework cycles: 1 (source review restored controller roles, onward-transfer
   consequence, authority evidence condition and standard-form contract scope).
   Actual token usage: unavailable.
