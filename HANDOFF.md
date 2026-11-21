@@ -84,7 +84,9 @@ the CI YAML/JSON checks pass.
 - Next action: optional `scan.sh --json` phase, pending a separate request.
 - This completion record is kept in the local checkout; the public tag
   remains the exact tested release commit.
-- Rework cycles: 0. Actual token usage: unavailable.
+- Rework cycles: 1 (source review restored controller roles, onward-transfer
+  consequence, authority evidence condition and standard-form contract scope).
+  Actual token usage: unavailable.
 
 ## JSON scanner phase (2026-11-20)
 
@@ -137,4 +139,49 @@ the CI YAML/JSON checks pass.
 - Next action: maintainer review/merge of PR #18. This documentation-only
   completion update records the verified implementation gate.
 - Rework cycles: 1 (evidence boundary cases from independent review).
+  Actual token usage: unavailable.
+
+## Legal-source verification phase (2026-11-21)
+
+- Goal: independently verify open legal-reference issues using original
+  government publications; update supported claims, distinguish unresolved
+  research from missing product facts and contested legal interpretation.
+- Base: `52e0643` (JSON PR #18 merged); branch `docs/verify-legal-sources`.
+- Contract: no invented article/penalty; preserve scope, conditions, party
+  roles, exceptions and transition dates. Verification of published wording
+  does not certify a particular site's compliance or a complete legal search.
+- Start with #1-#4 (NĐ 330/2026 and 356/2025), then examine remaining issues.
+  Edit source references and legal-reference ledger only, sync generated
+  plugin copies; no scanner behavior change, no issue closure until review.
+- Primary materials: original DOCX/PDF downloads from Công báo and signed
+  government PDFs; scratch originals/extracted text under work/legal-verification.
+- Acceptance: each new legal claim has a primary link + article/paragraph;
+  compare material amounts/conditions in original PDFs; one independent
+  read-only source/diff review; sync and existing CI pass; reviewable PR.
+- Relevant paths: `references/08-penalties-reference.md`,
+  `references/01-personal-data-protection.md`, relevant remaining checklist
+  files, `sources/legal-references.md`, new verification ledger under sources/.
+- Status: source/diff independently reviewed and corrected; ready for PR. Verified
+  the published-wording questions in #1-#3 and #5; remaining issues have
+  scoped findings and explicit open research in `sources/verification-2026-11-21.md`.
+  No issue has been closed, and no scanner behavior was changed.
+- Changed sources: `references/01-personal-data-protection.md`,
+  `02-ecommerce.md`, `03-cybersecurity.md`, `04-consumer-protection.md`,
+  `05-advertising.md`, `06-electronic-transactions.md`, `07-ai-transparency.md`,
+  `08-penalties-reference.md`, `09-mobile-app.md`; `sources/legal-references.md`
+  and `sources/verification-2026-11-21.md`; generated plugin copies via sync.
+- Verification: `bash tests/run.sh` PASS (17 fixtures, 8 URL tests, 13 JSON
+  tests); `bash tools/sync.sh --check` PASS; `git diff --check` PASS; existing
+  plugin JSON parse PASS. Local YAML check not rerun (host PyYAML unavailable);
+  GitHub CI gate still required. Original Công báo PDF pages visually checked
+  for Article 54/57 NĐ 330 and Article 41 NĐ 356, including the 72-hour harm
+  condition, formal designation, accumulated threshold and exceptions.
+- Risks: partial source research is explicitly retained; published text alone
+  cannot establish a particular product's facts or resolve contested interpretation.
+- Independent review: introduced claims checked against local primary extracts;
+  all reported scope/role omissions corrected and confirmed in a bounded recheck.
+- Next action/gate: integrate independent findings, publish reviewable PR,
+  wait for required GitHub CI; maintainer review/merge remains separate.
+- Rework cycles: 1 (source review restored controller roles, onward-transfer
+  consequence, authority evidence condition and standard-form contract scope).
   Actual token usage: unavailable.
