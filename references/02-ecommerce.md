@@ -24,6 +24,7 @@ Loại hình quyết định nghĩa vụ là thông báo hay đăng ký (mục B
 - [ ] Nền tảng trung gian, mạng xã hội TMĐT, nền tảng tích hợp: phải là pháp nhân và **đăng ký** trước khi hoạt động (Điều 14 khoản 2). Thủ tục do Chính phủ quy định (Điều 14 khoản 4, NĐ 248/2026).
 - [ ] Website đăng ký theo khung cũ: còn trong hạn chuyển tiếp đến 30/06/2027 không (Điều 41)?
 - [ ] Với nền tảng đã được xác nhận thủ tục tương ứng, kiểm tra **biểu tượng xác nhận điện tử** đã thông báo/đăng ký/cấp phép được gắn trên nền tảng và bấm vào dẫn tới thông tin công bố trên Hệ thống quản lý hoạt động TMĐT. Căn cứ: điểm a khoản 2 Điều 45 NĐ 248/2026; quy trình thông báo/đăng ký tại Phụ lục I mục I, II. Hệ thống vẫn ở online.gov.vn theo khoản 1 Điều 45, kết nối Cổng dịch vụ công quốc gia. Đã đối chiếu Công báo: không thay việc gắn biểu tượng bằng một ảnh logo tự chép hoặc suy rằng thủ tục trên Cổng dịch vụ công thì bỏ biểu tượng.
+- [ ] Link của biểu tượng phải dẫn tới đúng hồ sơ: dạng cũ `online.gov.vn/Home/WebDetails/<số>` hoặc dạng mới `online.gov.vn/nen-tang/<mã>`. Ảnh logo không có link, hoặc link chỉ về trang chủ online.gov.vn, không đáp ứng yêu cầu bấm vào dẫn tới thông tin công bố. Cổng online.gov.vn chạy trên trình duyệt và trả mã 200 cả với mã hồ sơ giả, nên phải mở link xem hồ sơ có đúng tên miền, đúng chủ sở hữu không.
 
 ## C. Công bố thông tin bắt buộc (Điều 11, trách nhiệm chung của nền tảng ở Điều 15)
 
@@ -32,6 +33,7 @@ Mỗi loại nền tảng có thêm nghĩa vụ riêng ở Điều 16-20.
 - [ ] Tên chủ sở hữu, địa chỉ, mã số thuế, email, số điện thoại.
 - [ ] Số giấy chứng nhận đăng ký doanh nghiệp (nếu là thương nhân).
 - [ ] Quyền và nghĩa vụ các bên (khoản 1 Điều 11): với site tự bán hàng, chấp nhận nhiều tên trang như điều khoản sử dụng, điều kiện giao dịch chung, chính sách mua hàng. "Quy chế hoạt động" chỉ yêu cầu với sàn trung gian, nền tảng có người bán bên thứ ba (mức 3).
+- [ ] Trang bán sản phẩm: công bố thông tin dịch vụ, thông tin chất lượng sản phẩm và nội dung bắt buộc trên nhãn hàng hóa, trừ ngày sản xuất, hạn sử dụng, số lô, số khung, số máy (Điều 16 khoản 1 điểm c với site tự bán; Điều 21 khoản 1 điểm c, khoản 2 điểm a với người bán trên sàn, mạng xã hội). Nội dung nhãn bắt buộc gồm tên hàng, xuất xứ, tổ chức chịu trách nhiệm... (Điều 42 NĐ 37/2026); người bán trên nền tảng TMĐT phải công khai đủ nội dung nhãn (Điều 41 khoản 5 điểm a NĐ 37/2026). NĐ 37/2026 (hiệu lực 23/01/2026) thay NĐ 43/2017 và NĐ 111/2021. Điều 16, 21 Luật 122 mới đối chiếu qua bản dịch tiếng Anh; số Điều 41 NĐ 37 lấy từ nguồn thứ cấp.
 - [ ] Chính sách đổi trả, hoàn tiền.
 - [ ] Chính sách vận chuyển, giao nhận.
 - [ ] Chính sách bảo vệ dữ liệu cá nhân (xem checklist 01).

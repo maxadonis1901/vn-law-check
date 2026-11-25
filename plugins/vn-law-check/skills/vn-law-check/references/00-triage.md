@@ -25,7 +25,7 @@ Chỉ hỏi ngược lại người dùng khi quét xong vẫn không xác đị
 |---|---|---|
 | 0: Tĩnh hoàn toàn | Không form, không script theo dõi, không tài khoản, chỉ là trang giới thiệu/blog/CV/portfolio tĩnh | Không audit đầy đủ. Báo 1 dòng: "Site tĩnh, không phát sinh nghĩa vụ pháp lý đáng kể theo luật hiện hành. Có thể bỏ qua audit chi tiết, nhưng nên rà lại nếu sau này thêm form hoặc script theo dõi." |
 | 1: Thu thập nhẹ | Có form liên hệ/newsletter/bình luận, hoặc gắn analytics/pixel, nhưng không bán hàng | `01-personal-data-protection.md`, chỉ mục A, B, C (chính sách, consent, cookie). Bỏ qua mục D, E (chuyển dữ liệu xuyên biên giới, DPIA, chỉ định DPO) trừ khi có lưu hoặc gửi dữ liệu cá nhân qua dịch vụ ở nước ngoài. |
-| 2: Bán hàng/TMĐT | Có giỏ hàng, thanh toán, bán sản phẩm/dịch vụ | `01` (đầy đủ) + `02-ecommerce.md` + `04-consumer-protection.md`. Thêm `05-advertising.md` nếu có quảng cáo/KOL, `06-electronic-transactions.md` nếu có hợp đồng điện tử. |
+| 2: Bán hàng/TMĐT | Có giỏ hàng, thanh toán, bán sản phẩm/dịch vụ | `01` (đầy đủ) + `02-ecommerce.md` + `04-consumer-protection.md`. Thêm `05-advertising.md` nếu có quảng cáo/KOL hoặc tự quảng cáo sản phẩm (từ ngữ tuyệt đối, thực phẩm bảo vệ sức khỏe), `06-electronic-transactions.md` nếu có hợp đồng điện tử. |
 | 3: Nền tảng/SaaS quy mô | Có tài khoản người dùng, xử lý dữ liệu lớn, hoặc là nền tảng cho bên thứ ba | Toàn bộ `01`-`08`. |
 
 Bất kể mức nào ở trên: nếu có chatbot AI hoặc nội dung AI-generated, luôn thêm `07-ai-transparency.md`. Chatbot nhận tin nhắn tự do của người dùng rồi gửi sang bên thứ ba (OpenAI, Anthropic...) thì tính tối thiểu mức 1, vì người dùng có thể gõ thông tin cá nhân vào.
@@ -36,6 +36,12 @@ Khi có TRACKING, `scan.sh` in thêm `TRACKING_CONSENT`:
 - `static`: script theo dõi viết thẳng trong HTML (`TRACKING_PRELOAD`), chạy ngay khi tải trang. Dấu hiệu khá chắc chắn cho mục 01-C 🔴, trừ khi site dùng thư viện đồng ý có chế độ tự chặn script (script sẽ in kèm ghi chú nếu thấy thư viện như vậy).
 - `gated`: có dấu hiệu chỉ nạp tracking sau khi đồng ý (thư viện quản lý đồng ý, Google Consent Mode, banner tự viết). Đây chỉ là dấu hiệu, không đủ để chấm 🟢: đọc code nạp script hoặc mở trình duyệt xem có request tới Google/Facebook trước khi bấm đồng ý không.
 - `unknown`: có tracking nhưng không thấy cơ chế xin đồng ý nào. Thường do tracking được nạp qua JS bundle hoặc Tag Manager; kiểm tra thủ công.
+
+## Tự quảng cáo sản phẩm
+
+`scan.sh` in thêm hai tín hiệu cho checklist 05:
+- **AD_CLAIM:** từ ngữ tuyệt đối như "giá rẻ nhất", "uy tín số 1". Chỉ là dấu hiệu cần rà mục 05-G, tối đa 🟡: có thể site đã có tài liệu chứng minh hợp lệ.
+- **HEALTH_SUPPLEMENT:** có nói tới thực phẩm bảo vệ sức khỏe. Khi đó script tìm câu "không phải là thuốc" và ghi `HEALTH_WARNING` (có/không). Không thấy thì 🟡 cho mục 05-F, vì câu khuyến cáo có thể nằm trong ảnh.
 
 ## Mobile app
 
