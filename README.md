@@ -194,7 +194,7 @@ JSON schema version 1 có các trường:
 | `target` | Đường dẫn hoặc URL được truyền vào |
 | `scope` | `mode` là `directory`/`url`, `root` là thư mục đã quét; URL có giới hạn `max_linked_pages: 15`, `max_javascript_files: 20` |
 | `summary` | `level` (0–3), các boolean `ai`, `foreign_host`, `app`, danh sách `platforms` và `tracking_consent` (`none`/`static`/`gated`/`unknown`) |
-| `signals` | Các tín hiệu như `FORM`, `TRACKING`, `COMMERCE`, `MOBILE_APP`, `ACCOUNT_DELETE`, `TRACKING_PRELOAD`, `CONSENT_GATE` |
+| `signals` | Các tín hiệu như `FORM`, `TRACKING`, `COMMERCE`, `MOBILE_APP`, `ACCOUNT_DELETE`, `TRACKING_PRELOAD`, `CONSENT_GATE`, `AD_CLAIM`, `HEALTH_WARNING` |
 | `limitations` | Các mã giới hạn của lần quét |
 
 Mỗi signal có `detected` là `true` (có dấu hiệu), `false` (chưa tìm thấy)

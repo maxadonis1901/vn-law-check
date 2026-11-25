@@ -180,6 +180,30 @@ class ScanJsonTests(unittest.TestCase):
             self.assertEqual(result.stdout, "")
             self.assertIn("Python 3", result.stderr)
 
+    def test_ad_claims_and_health_supplement_warning(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            page = Path(tmp, "index.html")
+            page.write_text(
+                "<p>Uy tín số 1 Việt Nam, giá rẻ nhất.</p>\n"
+                "<p>Mang lại trải nghiệm tốt nhất.</p>\n"
+                "<p>Số 1 Đại Cồ Việt</p>\n"
+                "<p>Thực phẩm bảo vệ sức khỏe ABC</p>\n"
+            )
+            result = self.scan(tmp)
+            claims = [hit["match"] for hit in result["signals"]["AD_CLAIM"]["evidence"]]
+            self.assertEqual(claims, ["Uy tín số 1", "giá rẻ nhất"])
+            self.assertTrue(result["signals"]["HEALTH_SUPPLEMENT"]["detected"])
+            self.assertFalse(result["signals"]["HEALTH_WARNING"]["detected"])
+
+            page.write_text(page.read_text() + "<p>Thực phẩm này không phải là thuốc.</p>\n")
+            self.assertTrue(self.scan(tmp)["signals"]["HEALTH_WARNING"]["detected"])
+
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp, "index.html").write_text("<p>Chính sách đổi trả</p>\n")
+            result = self.scan(tmp)
+            self.assertFalse(result["signals"]["AD_CLAIM"]["detected"])
+            self.assertIsNone(result["signals"]["HEALTH_WARNING"]["detected"])
+
 
 if __name__ == "__main__":
     unittest.main()

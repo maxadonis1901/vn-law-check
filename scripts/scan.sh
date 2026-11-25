@@ -85,6 +85,8 @@ SIGNALS=(
   "AUTH|/login|/register|/signin|/signup|sign[-_ ]?in|đăng nhập|next-auth|nextauth|firebase/auth|supabase\.auth|passport|@clerk|auth0"
   "MARKETPLACE|multi[-_ ]?vendor|seller[-_ ]?(dashboard|register|signup|onboard)|vendor[-_ ]?(dashboard|register)|người bán|kênh người bán|đăng ký bán hàng"
   "AI|api\.openai\.com|\"openai\"|@anthropic-ai|api\.anthropic\.com|@ai-sdk|generativelanguage\.googleapis|@google/generative-ai|dialogflow|langchain|chatbot"
+  "AD_CLAIM|(giá|sản phẩm|chất lượng|dịch vụ|hàng) (tốt|rẻ) nhất|rẻ nhất|uy tín nhất|duy nhất (tại|ở|trên thị trường) Việt Nam|số (1|một) (Việt Nam|thị trường|thế giới)|(uy tín|chất lượng|thương hiệu|đứng|xếp hạng) số (1|một)"
+  "HEALTH_SUPPLEMENT|thực phẩm bảo vệ sức kh(ỏe|oẻ)|thực phẩm chức năng|TPBVSK|TPCN"
   "PERMISSIONS|android\.permission\.(ACCESS_FINE_LOCATION|ACCESS_COARSE_LOCATION|ACCESS_BACKGROUND_LOCATION|READ_CONTACTS|WRITE_CONTACTS|CAMERA|RECORD_AUDIO|READ_SMS|RECEIVE_SMS|READ_CALL_LOG|READ_PHONE_STATE|READ_MEDIA_IMAGES|READ_MEDIA_VIDEO|READ_EXTERNAL_STORAGE|BODY_SENSORS|ACTIVITY_RECOGNITION)|NS(LocationWhenInUse|LocationAlways|LocationAlwaysAndWhenInUse|Contacts|Camera|Microphone|PhotoLibrary|PhotoLibraryAdd|UserTracking|HealthShare|HealthUpdate|SpeechRecognition|Motion)UsageDescription|\"(ACCESS_FINE_LOCATION|ACCESS_COARSE_LOCATION|ACCESS_BACKGROUND_LOCATION|READ_CONTACTS|CAMERA|RECORD_AUDIO|READ_SMS)\""
   "SDK_TRACKING|firebase_analytics|@react-native-firebase/analytics|firebase-analytics|FirebaseAnalytics|react-native-fbsdk|facebook_app_events|FBSDKCoreKit|com\.facebook\.android|appsflyer|react-native-adjust|com\.adjust\.sdk|adjust_sdk|react-native-branch|io\.branch|mixpanel|amplitude|@segment/analytics-react-native|AppTrackingTransparency|app_tracking_transparency|react-native-tracking-transparency"
   "ADS_SDK|google_mobile_ads|react-native-google-mobile-ads|play-services-ads|Google-Mobile-Ads-SDK|GoogleMobileAds|applovin|unity-ads|unity_ads|ironsource|admob"
@@ -184,6 +186,21 @@ else
   record_result CONSENT_GATE null ""
 fi
 
+
+# Thực phẩm bảo vệ sức khỏe: nội dung giới thiệu phải kèm câu khuyến cáo "không phải là thuốc" (05 mục F).
+if found HEALTH_SUPPLEMENT; then
+  warn="$(grep "${GREP_ARGS[@]}" -e "không phải là thuốc|không phải thuốc" "$DIR" 2>/dev/null | awk '!seen[$0]++' | head -n 2)"
+  if [ -n "$warn" ]; then
+    record_result HEALTH_WARNING true "$warn"
+    echo "[có]    HEALTH_WARNING"
+    echo "$warn" | sed "s#^$DIR/##" | cut -c1-160 | sed 's/^/          /'
+  else
+    record_result HEALTH_WARNING false ""
+    echo "[không] HEALTH_WARNING   (có thực phẩm bảo vệ sức khỏe nhưng không thấy câu \"không phải là thuốc\", xem 05 mục F)"
+  fi
+else
+  record_result HEALTH_WARNING null ""
+fi
 
 record_result ACCOUNT_DELETE null ""
 if [ -n "$platforms" ]; then

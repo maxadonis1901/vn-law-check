@@ -17,6 +17,7 @@ Nhiều số điều trong checklist lấy từ bản tóm tắt của công ty 
 | Văn bản | Ngày hiệu lực | Ghi chú | Link |
 |---|---|---|---|
 | Luật Thương mại điện tử, số 122/2025/QH15 | 01/07/2026 | Website đăng ký theo khung cũ được hoạt động đến 30/06/2027 (Điều 41) | [thuvienphapluat](https://thuvienphapluat.vn/van-ban/Thuong-mai/Luat-Thuong-mai-dien-tu-2025-so-122-2025-QH15-662035.aspx), [bản tiếng Anh](https://thuvienphapluat.vn/van-ban/EN/Thuong-mai/Law-122-2025-QH15-Electronic-Commerce/703876/tieng-anh.aspx) |
+| Nghị định 37/2026/NĐ-CP | 23/01/2026 | Nhãn hàng hóa. Thay NĐ 43/2017, NĐ 111/2021. Điều 41 khoản 5, 6: công khai nhãn khi bán trên nền tảng TMĐT; Điều 42: nội dung bắt buộc | |
 | Nghị định 248/2026/NĐ-CP | 01/07/2026 | Ban hành 30/06/2026. Thay NĐ 52/2013, NĐ 85/2021. Xác thực điện tử người bán, người livestream từ 01/01/2027 | [Bộ Công Thương](https://moit.gov.vn/tin-tuc/bo-cong-thuong-pho-bien-luat-thuong-mai-dien-tu-va-nghi-dinh-so-248-2026-nd-cp.html) |
 | Văn bản hợp nhất 41/VBHN-BCT | 04/06/2026 | Hợp nhất quy định quản lý website TMĐT (TT 47/2014 và các lần sửa, mới nhất TT 26/2026/TT-BCT) | [Bộ Công Thương](https://moit.gov.vn/van-ban-phap-luat/van-ban-hop-nhat-so-41-vbhn-bct-thong-tu-quy-dinh-ve-quan-ly-website-thuong-mai-dien-tu.html) |
 | NĐ 52/2013, NĐ 85/2021 | Hết hiệu lực 01/07/2026 | Điều 52 khoản 3 NĐ 248/2026; ngoại lệ chuyển tiếp Điều 53. Đã đọc nguyên văn, không suy luôn hiệu lực của mọi thông tư hướng dẫn | [Công báo NĐ 248/2026](https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-248-2026-nd-cp-469983.htm) |
@@ -38,9 +39,11 @@ Nhiều số điều trong checklist lấy từ bản tóm tắt của công ty 
 ## Quảng cáo
 | Văn bản | Ngày hiệu lực | Ghi chú | Link |
 |---|---|---|---|
-| Luật Quảng cáo, số 16/2012/QH13 | | Luật gốc | |
+| Luật Quảng cáo, số 16/2012/QH13 | | Luật gốc. Văn bản hợp nhất 88/VBHN-VPQH (22/08/2025) | [luatvietnam](https://luatvietnam.vn/thuong-mai/van-ban-hop-nhat-88-vbhn-vpqh-nam-2025-do-van-phong-quoc-hoi-ban-hanh-hop-nhat-luat-quang-cao-409764-d5.html) |
 | Luật sửa đổi Luật Quảng cáo, số 75/2025/QH15 | 01/01/2026 | Thông qua 16/06/2025 | [thuvienphapluat](https://thuvienphapluat.vn/van-ban/Thuong-mai/Luat-Quang-cao-sua-doi-2025-so-75-2025-QH15-555035.aspx), [tóm tắt](https://luatvietnam.vn/linh-vuc-khac/diem-moi-cua-luat-quang-cao-sua-doi-2025-883-102813-article.html) |
 | Nghị định 342/2025/NĐ-CP | 15/02/2026 | Thay thế NĐ 181/2013 và NĐ 70/2021 | [Chương 3 Mục 2](https://hethongphapluat.com/nghi-dinh-342-2025-nd-cp-huong-dan-luat-quang-cao/chuong-3/muc-2) |
+| Thông tư 12/2026/TT-BVHTTDL | 05/07/2026 | Ký 22/05/2026. Điều 3: tài liệu chứng minh khi dùng từ ngữ tuyệt đối. Mới đối chiếu qua nguồn thứ cấp | |
+| Nghị định 15/2018/NĐ-CP | 02/02/2018 | Điều 27: quảng cáo thực phẩm bảo vệ sức khỏe. NĐ 46/2026 định thay nhưng bị Nghị quyết 15/2026/NQ-CP (06/04/2026) tạm ngưng | |
 | Nghị định 87/2026/NĐ-CP | 15/05/2026 | Ban hành 27/03/2026; Điều 93 khoản 2 điểm a làm hết hiệu lực NĐ 38/2021, chuyển tiếp Điều 94; Điều 6 và 51 xác định chủ thể/mức cho người có ảnh hưởng | [Công báo, DOCX/PDF](https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-87-2026-nd-cp-469359/64268.htm) |
 
 ## Giao dịch điện tử
